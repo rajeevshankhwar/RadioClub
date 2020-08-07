@@ -1,0 +1,543 @@
+﻿@model RadioClub.Models.MemberViewModel
+
+@{
+    ViewBag.Title = "Detailss";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <diV class="row">
+        <div class="col-md-2 pt-3">
+            <img src="~/Content/Images/logo/radioclublogo.png" class="img-fluid" width="120" />
+        </div>
+        <div class="col-md-8 text-center pt-3">
+            <h3><i>The Bombay Presidency Radio Club Ltd.</i></h3>
+            <h6>157, Arthur Bunder Road, Colaba, Mumbai - 400 005.</h6>
+            <h6>Tel.: 22845025, 22845121 / 23 Fax : 22833213</h6>
+            <h6>Email : radclubmumbai@gmail.com | radioclub05@gmail.com</h6>
+            <h6>CIN No. U99999MH1928GAP001372</h6>
+        </div>
+        <div class="col-md-2"></div>
+    </diV>
+
+    @{if (Model != null)
+        {
+
+
+
+            <div class="form-horizontal">
+                <h5 class="text-center">MEMBER'S PERSONAL DATA</h5>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group row pt-2">
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Membership No:<span class="text-danger">*</span></label>
+                    <div class="col-md-4 border-bottom">
+                        @Html.DisplayFor(model => model.membership_no)
+                    </div>
+
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">PAN Card No:<span class="text-danger">*</span></label>
+                    <div class="col-md-4 border-bottom">
+                        @Html.DisplayFor(model => model.pancard)
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Name:</label>
+                    <div class="col-md-4 border-bottom">
+                        @Html.DisplayFor(model => model.first_name)
+                    </div>
+
+                    <div class="col-md-3 border-bottom">
+                        @Html.DisplayFor(model => model.middle_name)
+                    </div>
+
+                    <div class="col-md-3 border-bottom">
+                        @Html.DisplayFor(model => model.last_name)
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Date Of Birth:</label>
+                    <div class="col-md-2 border-bottom">
+                        @Html.DisplayFor(model => model.dob)
+                    </div>
+
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Present Marital Status:</label>
+                    <div class="col-md-2 border-bottom">
+                        @Html.DisplayFor(model => model.persent_merital_status, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Marriage Date:</label>
+                    <div class="col-md-2 border-bottom">
+                        @Html.DisplayFor(model => model.marriage_date, new { htmlAttributes = new { type = "date", @class = "form-control form-control-sm" } })
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Nationality:</label>
+                    <div class="col-md-2 border-bottom">
+                        @Html.DisplayFor(model => model.nationality, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Occupation:</label>
+                    <div class="col-md-2 border-bottom">
+                        @Html.DisplayFor(model => model.occupation, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+
+                    <label for="inputEmail3" class="col-md-3 col-form-label font-weight-bold">Divorce Date:<small> (if applicable)</small></label>
+                    <div class="col-md-1 border-bottom">
+                        @Html.DisplayFor(model => model.divorce_date, new { htmlAttributes = new { type = "date", @class = "form-control form-control-sm" } })
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Aadhar Card No:</label>
+                    <div class="col-md-10 border-bottom">
+                        @Html.DisplayFor(model => model.aadharcard, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Spouse Full Name:</label>
+                    <div class="col-md-4 border-bottom">
+                        @Html.DisplayFor(model => model.spouse_full_name, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Spuse Date of Birth:</label>
+                    <div class="col-md-4 border-bottom">
+                        @Html.DisplayFor(model => model.spouse_dob, new { htmlAttributes = new { type = "date", @class = "form-control form-control-sm" } })
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Spouse Nationality:</label>
+                    <div class="col-md-4 border-bottom">
+                        @Html.DisplayFor(model => model.spouse_nationality, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Spouse Occupation:</label>
+                    <div class="col-md-4 border-bottom">
+                        @Html.DisplayFor(model => model.spouse_occupation, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">PAN Card No:</label>
+                    <div class="col-md-4 border-bottom">
+                        @Html.DisplayFor(model => model.spouse_pancard, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Aadhar Card No:</label>
+                    <div class="col-md-4 border-bottom">
+                        @Html.DisplayFor(model => model.spouse_aadharcard, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Residential Address:</label>
+                    <div class="col-md-6 border-bottom">
+                        @Html.DisplayFor(model => model.residential_address, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Pincode:</label>
+                    <div class="col-md-2 border-bottom">
+                        @Html.DisplayFor(model => model.residential_pincode, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-4 col-form-label font-weight-bold">Office Details (Name of the Company):</label>
+                    <div class="col-md-8 border-bottom">
+                        @Html.DisplayFor(model => model.company_name, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Type of Business:</label>
+                    <div class="col-md-4 border-bottom">
+                        @Html.DisplayFor(model => model.business_type, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Position Held:</label>
+                    <div class="col-md-4 border-bottom">
+                        @Html.DisplayFor(model => model.position_held, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Office Address:</label>
+                    <div class="col-md-6 border-bottom">
+                        @Html.DisplayFor(model => model.office_address, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Pincode:</label>
+                    <div class="col-md-2 border-bottom">
+                        @Html.DisplayFor(model => model.office_pincode, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Telephone Nos. Office:</label>
+                    <div class="col-md-2 border-bottom">
+                        @Html.DisplayFor(model => model.office_telep, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Residential Nos:</label>
+                    <div class="col-md-2 border-bottom">
+                        @Html.DisplayFor(model => model.residential_tele, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Mobile No:</label>
+                    <div class="col-md-2 border-bottom">
+                        @Html.DisplayFor(model => model.mobile_no, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Fax No:</label>
+                    <div class="col-md-3 border-bottom">
+                        @Html.DisplayFor(model => model.fax_no, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+
+                    <label for="inputEmail3" class="col-md-2 col-form-label font-weight-bold">Email Id:</label>
+                    <div class="col-md-5 border-bottom">
+                        @Html.DisplayFor(model => model.email_id, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+                    </div>
+
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-md-9 m-auto small border">
+                        <h6>
+                            Consent for Communication by Email: @Html.DisplayFor(x => x.communi_by_email) @*<input type="checkbox" class="form-control form-control-sm" name="communi_by_email" id="communi_by_email">*@
+
+
+                        </h6>
+                        <p>I, Mr. / Mrs. / Ms. <input type="text" value="" name="em_name" id="em_name" disabled /> , Membership No.<input type="text" id="em_mem_no" disabled />	hereby give illy consent to the effect that the </p>
+                        <p>
+                            Bills, Invoices, Statement For The Month, Notices, Newsletters, Notices for General Meetings, Financial Statement along with Board's Report & Auditors' Report & other Correspondences, etc.to be sent by the Club can be sent to me by email.
+                        </p>
+                    </div>
+                </div>
+
+
+                <h3 class="pt-5 pb-3" style="page-break-before: always">Family Members Photographs and their Signatures</h3>
+                <div class="container border p-4">
+                    <div class="row pb-3">
+                        <div class="col-md-6">
+                            <div class="row justify-content-center">
+                                <label for="member_image"><h6>Member</h6></label>
+                            </div>
+                            <div class="row justify-content-center p-2">
+                                @{
+                                    var mImage = "na";
+                                    if (Model.member_image != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(Model.member_image);
+                                        mImage = String.Format("data:image/jpg;base64,{0}", base64);
+                                    }
+                                }
+                                <img class="img-fluid border" style="width:150px;height:180px" src="@mImage" />
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="row justify-content-center">
+                                <label for="member_image"><h6>Spouse</h6></label>
+                            </div>
+                            <div class="row justify-content-center p-2">
+                                @{
+                                    var sImage = "na";
+                                    if (Model.spouse_image != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(Model.spouse_image);
+                                        sImage = String.Format("data:image/jpg;base64,{0}", base64);
+                                    }
+                                }
+                                <img class="img-fluid border" style="width:150px;height:180px" src="@sImage" />
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row m-auto">
+                        <div class="col-md-6 justify-content-center">
+                            <div class="row justify-content-center">
+                                <label for="member_image"><h6>Member Signature</h6></label>
+                            </div>
+                            <div class="row justify-content-center p-2">
+                                <img class="img-fluid border" style="width:180px;height:80px" />
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 justify-content-center">
+                            <div class="row justify-content-center">
+                                <label for="member_image"><h6>Spouse Signature</h6></label>
+                            </div>
+                            <div class="row justify-content-center p-2">
+                                <img class="img-fluid border" style="width:180px;height:80px" />
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <h4 class="pt-5 pb-3">Family Members Documents</h4>
+                <div class="form-group border">
+                    <div class="row">
+                        <div class="col-md-3 justify-content-center p-3">
+                            <div class="row justify-content-center">
+                                <label for="member_image"><h6>Member PAN Card</h6></label>
+                            </div>
+                            <div class="row justify-content-center p-2">
+                                @{
+                                    var mPan = "na";
+                                    if (Model.member_pan_image != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(Model.member_pan_image);
+                                        mPan = String.Format("data:image/jpg;base64,{0}", base64);
+                                    }
+                                }
+                                <img class="img-fluid border" style="width:150px;height:180px" src="@mPan" />
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3 justify-content-center p-3">
+                            <div class="row justify-content-center">
+                                <label for="member_image"><h6>Member Aadhar</h6></label>
+                            </div>
+                            <div class="row justify-content-center p-2">
+                                @{
+                                    var mAadhar = "na";
+                                    if (Model.member_aadhar_img != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(Model.member_aadhar_img);
+                                        mAadhar = String.Format("data:image/jpg;base64,{0}", base64);
+                                    }
+                                }
+                                <img class="img-fluid border" style="width:150px;height:180px" src="@mAadhar" />
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3 justify-content-center p-3">
+                            <div class="row justify-content-center">
+                                <label for="member_image"><h6>Spouse PAN card</h6></label>
+                            </div>
+                            <div class="row justify-content-center p-2">
+                                @{
+                                    var sPan = "na";
+                                    if (Model.spouse_pan_img != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(Model.spouse_pan_img);
+                                        sPan = String.Format("data:image/jpg;base64,{0}", base64);
+                                    }
+                                }
+                                <img class="img-fluid border" style="width:150px;height:180px" src="@sPan" />
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3 justify-content-center p-3">
+                            <div class="row justify-content-center">
+                                <label for="member_image"><h6>Spouse Aadhar</h6></label>
+                            </div>
+                            <div class="row justify-content-center p-2">
+                                @{
+                                    var sAadhar = "na";
+                                    if (Model.spouse_aadhar_img != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(Model.spouse_aadhar_img);
+                                        sAadhar = String.Format("data:image/jpg;base64,{0}", base64);
+                                    }
+                                }
+                                <img class="img-fluid border" style="width:150px;height:180px" src="@sAadhar" />
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 justify-content-center p-3">
+                            <div class="row justify-content-center">
+                                <label for="member_image"><h6>Member Passport</h6></label>
+                            </div>
+                            <div class="row justify-content-center p-2">
+                                @{
+                                    var mPass = "na";
+                                    if (Model.member_passport_img != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(Model.member_passport_img);
+                                        mPass = String.Format("data:image/jpg;base64,{0}", base64);
+                                    }
+                                }
+                                <img class="img-fluid border" style="width:150px;height:180px" src="@mPass" />
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3 justify-content-center p-3">
+                            <div class="row justify-content-center">
+                                <label for="member_image"><h6>Spouse Passport</h6></label>
+                            </div>
+                            <div class="row justify-content-center p-2">
+                                @{
+                                    var sPass = "na";
+                                    if (Model.spouse_passport_img != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(Model.spouse_passport_img);
+                                        sPass = String.Format("data:image/jpg;base64,{0}", base64);
+                                    }
+                                }
+                                <img class="img-fluid border" style="width:150px;height:180px" src="@sPass" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 justify-content-center p-3">
+                            <div class="row justify-content-center">
+                                <label for="member_image"><h6>Marriage Certificate</h6></label>
+                            </div>
+                            <div class="row justify-content-center p-2">
+                                @{
+                                    var imgSrc = "na";
+                                    if (Model.marriage_certi_img != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(Model.marriage_certi_img);
+                                        imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                    }
+                                }
+                                <img class="img-fluid border" style="width:150px;height:180px" src="@imgSrc" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 justify-content-center p-3">
+                            <div class="row justify-content-center">
+                                <label for="member_image"><h6>Divorce Certificate</h6></label>
+                            </div>
+                            <div class="row justify-content-center p-2">
+                                @{
+                                    var divorceImg = "na";
+                                    if (Model.divorce_certi_image != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(Model.divorce_certi_image);
+                                        divorceImg = String.Format("data:image/jpg;base64,{0}", base64);
+                                    }
+                                }
+                                <img class="img-fluid border" style="width:150px;height:180px" src="@divorceImg" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <fieldset style="page-break-before: always">
+                    <legend>Children Info</legend>
+                    <div class="border bg-light" id="newChild">
+                        @{Html.RenderPartial("_ChildDetails", Model);}
+                    </div>
+                </fieldset>
+
+
+                <div class="pt-3">
+                    <div class="pb-1">Documents required of the Member & all their Dependant Members (Spouse & Children)</div>
+
+                    <div class="pb-3">Self Attested Xerox Copies of : Passport or Birth Certificate, Aadhar Card, PAN Card, Marriage Certificate</div>
+                    <h5>PAN CARD IS MANDATORY</h5>
+                    <div class="row">
+                        <div class="col-md-2">
+                            Note :
+                        </div>
+                        <div class="col-md-10 pt-2">
+                            <div class="row">
+                                Members are requested to surrender the identity cards of their dependant daughters (if not already a Member) Immediately after their Marriage & in case of their dependant sons, on reaching the age of 21 years to the Office, as they are not eligible to use the club's facilities, as dependant members.
+                            </div>
+                            <div class="row pt-1">
+                                I confirm that I have read the Memorandum and Articles of Association & Bye-Laws of the club and I confirm that I will abide by the same.
+                            </div>
+                            <div class="row pt-1">
+                                Any change in the members of the family has to be intimated within 90 days of such change with necessary proof.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-md-7">
+                            <div>
+                                I Hereby Declare that to the best of my knowledge, the above information / particulars furnished by (Mr./Mrs. / Ms.)_____________________________   are correct & true.
+                            </div>
+                            <div class="pt-1">
+                                If any information given in this form is found to be incorrect, it will automatically render the application and / or membership invalid.
+                            </div>
+
+                        </div>
+                        <div class="col-md-5 align-text-bottom">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="row pb-5">
+
+                                    </div>
+                                    <div class="row border-top text-center">
+                                        Date
+                                    </div>
+
+                                </div>
+                                <div class="col-6">
+                                    <div class="row pb-5">
+
+                                    </div>
+                                    <div class="row border-top text-center">
+                                        Signature of the Member
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="form-row form-group justify-content-end pt-5">
+                    <div class="col-md-6">
+                        <input type="text" value="Print" onclick="window.print();return false;" class="btn btn-sm btn-secondary" />
+                        @*@Html.ActionLink("Print", "Print", new { id = Model.member_id }, new { @class = "btn btn-info btn-sm", @role = "button" }) |*@
+                       
+                    </div>
+                    <div class="col-md-6 text-right">
+                        @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-primary btn-sm", @role = "button" })
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+    }
+</div>
+

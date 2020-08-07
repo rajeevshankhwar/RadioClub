@@ -1,0 +1,808 @@
+﻿@model RadioClub.Models.MemberViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="container">
+        <diV class="row">
+
+
+            <div class="col-md-2 pt-3">
+                <img src="~/Content/Images/logo/radioclublogo.png" class="img-fluid" width="120" />
+            </div>
+            <div class="col-md-8 text-center pt-3">
+                <h3><i>The Bombay Presidency Radio Club Ltd.</i></h3>
+                <h6>157, Arthur Bunder Road, Colaba, Mumbai - 400 005.</h6>
+                <h6>Tel.: 22845025, 22845121 / 23 Fax : 22833213</h6>
+                <h6>Email : radclubmumbai@gmail.com | radioclub05@gmail.com</h6>
+                <h6>CIN No. U99999MH1928GAP001372</h6>
+            </div>
+            <div class="col-md-2"></div>
+        </diV>
+        <h2>
+        </h2>
+        @using (Ajax.BeginForm("Create", "Home", null,
+                      new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "QueryResult", LoadingElementId = "loading" }))
+        {
+            @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h5 class="text-center">MEMBER'S PERSONAL DATA</h5>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group row bg-warning pt-2">
+            <label for="inputEmail3" class="col-md-2 col-form-label">Membership No:<span class="text-danger">*</span></label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.membership_no, new { htmlAttributes = new { @readonly = "true", @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.membership_no, "", new { @class = "text-danger" })
+            </div>
+
+            <label for="inputEmail3" class="col-md-2 col-form-label">PAN Card No:<span class="text-danger">*</span></label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.pancard, new { htmlAttributes = new { @readonly = "true", @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.pancard, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-md-2 col-form-label">Name:</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.first_name, new { htmlAttributes = new { required = "true", placeholder = "First Name", @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.first_name, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.middle_name, new { htmlAttributes = new { placeholder = "Middle Name", @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.middle_name, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.last_name, new { htmlAttributes = new { placeholder = "Last Name", @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.last_name, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-md-2 col-form-label">Date Of Birth:</label>
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.dob, new { htmlAttributes = new { type = "date", @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.dob, "", new { @class = "text-danger" })
+            </div>
+
+            <label for="inputEmail3" class="col-md-2 col-form-label">Present Marital Status:</label>
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.persent_merital_status, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.persent_merital_status, "", new { @class = "text-danger" })
+            </div>
+
+            <label for="inputEmail3" class="col-md-2 col-form-label">Marriage Date:</label>
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.marriage_date, new { htmlAttributes = new { type = "date", @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.marriage_date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-md-2 col-form-label">Nationality:</label>
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.nationality, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.nationality, "", new { @class = "text-danger" })
+            </div>
+
+            <label for="inputEmail3" class="col-md-2 col-form-label">Occupation:</label>
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.occupation, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.occupation, "", new { @class = "text-danger" })
+            </div>
+
+            <label for="inputEmail3" class="col-md-2 col-form-label">Divorce Date: <br /><small> (if applicable)</small></label>
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.divorce_date, new { htmlAttributes = new { type = "date", @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.divorce_date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+
+            <label for="inputEmail3" class="col-md-2 col-form-label">Aadhar Card No:</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.aadharcard, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.aadharcard, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-md-2 col-form-label">Spouse Full Name:</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.spouse_full_name, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.spouse_full_name, "", new { @class = "text-danger" })
+            </div>
+
+            <label for="inputEmail3" class="col-md-2 col-form-label">Spouse Date of Birth:</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.spouse_dob, new { htmlAttributes = new { type = "date", @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.spouse_dob, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-md-2 col-form-label">Spouse Nationality:</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.spouse_nationality, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.spouse_nationality, "", new { @class = "text-danger" })
+            </div>
+
+            <label for="inputEmail3" class="col-md-2 col-form-label">Spouse Occupation:</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.spouse_occupation, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.spouse_occupation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-md-2 col-form-label">Spouse PAN Card No:</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.spouse_pancard, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.spouse_pancard, "", new { @class = "text-danger" })
+            </div>
+
+            <label for="inputEmail3" class="col-md-2 col-form-label">Aadhar Card No:</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.spouse_aadharcard, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.spouse_aadharcard, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-md-2 col-form-label">Residential Address:</label>
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.residential_address, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.residential_address, "", new { @class = "text-danger" })
+            </div>
+
+            <label for="inputEmail3" class="col-md-2 col-form-label">Pincode:</label>
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.residential_pincode, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.residential_pincode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-md-4 col-form-label">Office Details (Name of the Company):</label>
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.company_name, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.company_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-md-2 col-form-label">Type of Business:</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.business_type, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.business_type, "", new { @class = "text-danger" })
+            </div>
+            <label for="inputEmail3" class="col-md-2 col-form-label">Position Held:</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.position_held, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.position_held, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-md-2 col-form-label">Office Address:</label>
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.office_address, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.office_address, "", new { @class = "text-danger" })
+            </div>
+
+            <label for="inputEmail3" class="col-md-2 col-form-label">Pincode:</label>
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.office_pincode, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.office_pincode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row text-center"><div class="col-md-12 text-danger">Enter multiple numbers separated with comma</div></div>
+
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-md-2 col-form-label">Telephone Nos. Office:</label>
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.office_telep, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.office_telep, "", new { @class = "text-danger" })
+            </div>
+            <label for="inputEmail3" class="col-md-2 col-form-label">Residential Nos:</label>
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.residential_tele, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.residential_tele, "", new { @class = "text-danger" })
+            </div>
+            <label for="inputEmail3" class="col-md-2 col-form-label">Mobile Nos:</label>
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.mobile_no, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.mobile_no, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+           
+
+            <label for="inputEmail3" class="col-md-2 col-form-label">Email Id:</label>
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.email_id, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                @Html.ValidationMessageFor(model => model.email_id, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="row text-center">
+            <div class="col-md-9 m-auto small border">
+                <h6>
+                    Consent for Communication by Email:
+                    @Html.EditorFor(model => model.communi_by_email, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                    @*<input type="checkbox" class="form-control form-control-sm" name="communi_by_email" id="communi_by_email">*@
+                    @Html.ValidationMessageFor(model => model.communi_by_email, "", new { @class = "text-danger" })
+                    and SMS:
+                    @Html.EditorFor(model => model.communi_by_sms, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                    @*<input type="checkbox" class="form-control form-control-sm" name="communi_by_email" id="communi_by_email">*@
+                    @Html.ValidationMessageFor(model => model.communi_by_sms, "", new { @class = "text-danger" })
+
+                </h6>
+                <p>I, Mr. / Mrs. / Ms. <input type="text" value="" name="em_name" id="em_name" disabled /> , Membership No.<input type="text" name="em_mem_no" value="" id="em_mem_no" disabled />	 </p>
+                <p>
+                    hereby give my consent to the effect that the bills, invoices, statement for the month, notices, newsletters, notices for general meetings, financial statement along with Board's Report & Auditors' Report & other Correspondences, etc.to be sent by the Club can be sent to me by email.
+                </p>
+            </div>
+        </div>
+
+
+        <h3 class="pt-5 pb-3" style="page-break-before: always">Family Member's Photographs and their Signatures</h3>
+        <div class="form-group border p-4">
+            <div class="row m-auto pb-3">
+                <div class="col-md-6">
+                    <div class="row justify-content-center">
+                        <label for="member_image"><h4>Member Photograph</h4></label>
+                    </div>
+                    <div class="row justify-content-center p-2">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="img" id="img" onchange="encodeImgtoBase64(this)">
+                            <label class="custom-file-label" for="img">Choose file</label>
+                        </div>
+                        @*<input type="file" name="img" id="img" class="form-control form-control-sm form-control-file" onchange="encodeImgtoBase64(this)">*@
+                    </div>
+                    <div class="row justify-content-center">
+                        <img src="" class="img-fluid border" alt="" name="displayMemberImg" id="displayMemberImg" style="width:150px; height:180px">
+                        <input type="text" value="" id="member_image" name="member_image" hidden />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row justify-content-center">
+                        <label for="member_image"><h4>Spouse Photograph</h4></label>
+                    </div>
+                    <div class="row justify-content-center p-2">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="img" id="img" onchange="spouseImgtoBase64(this)">
+                            <label class="custom-file-label" for="img">Choose file</label>
+                        </div>
+                        @*<input type="file" name="img" id="img" class="form-control form-control-sm form-control-file" onchange="encodeImgtoBase64(this)">*@
+                    </div>
+                    <div class="row justify-content-center">
+                        <img src="" class="img-fluid border" alt="" name="displaySpouseImg" id="displaySpouseImg" style="width:150px; height:180px">
+                        @*@Html.EditorFor(model => model.spouse_image, new { htmlAttributes = new {@hidden="true", @class = "form-control form-control-sm" } })*@
+
+                        <input type="text" value="" id="spouse_image" name="spouse_image" hidden />
+                    </div>
+                </div>
+            </div>
+            <hr />
+
+            <div class="row m-auto">
+                <div class="col-md-6 justify-content-center">
+                    <div class="row justify-content-center">
+                        <label for="member_image"><h4>Member Signature</h4></label>
+                    </div>
+                    <div class="row justify-content-center p-2">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="img" id="img" onchange="memberSignImgtoBase64(this)">
+                            <label class="custom-file-label" for="img">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <img src="" class="img-fluid border" alt="" name="displayMemberSignImg" id="displayMemberSignImg" style="width:180px; height:80px">
+                        <input type="text" value="" id="member_sign" name="member_sign" hidden />
+                    </div>
+                </div>
+
+                <div class="col-md-6 justify-content-center">
+                    <div class="row justify-content-center">
+                        <label for="member_image"><h4>Spouse Signature</h4></label>
+                    </div>
+                    <div class="row justify-content-center p-2">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="img" id="img" onchange="spouseSignImgtoBase64(this)">
+                            <label class="custom-file-label" for="img">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <img src="" class="img-fluid border" alt="" name="displaySpouseSignImg" id="displaySpouseSignImg" style="width:180px; height:80px">
+                        <input type="text" value="" id="spouse_sign" name="spouse_sign" hidden />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <h4 class="pt-5 pb-3">Family Member's Documents</h4>
+        <div class="form-group border p-3">
+            <div class="row">
+                <div class="col-md-3 justify-content-center p-3">
+                    <div class="row justify-content-center">
+                        <label for="member_image"><h5>Member PAN Card No</h5></label>
+                    </div>
+                    <div class="row justify-content-center p-2">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="img" id="img" onchange="MemberPan64(this)">
+                            <label class="custom-file-label" for="img">Choose file</label>
+                        </div>
+                        @*<input type="file" name="img" id="img" class="form-control form-control-sm form-control-file" onchange="encodeImgtoBase64(this)">*@
+                    </div>
+                    <div class="row justify-content-center">
+                        <img src="" class="img-fluid border" alt="" name="displayMemberPan" id="displayMemberPan" style="width:150px; height:180px">
+                        <input type="text" value="" id="member_pan_image" name="member_pan_image" hidden />
+                    </div>
+                </div>
+
+                <div class="col-md-3 justify-content-center p-3">
+                    <div class="row justify-content-center">
+                        <label for="member_image"><h5>Member Aadhar No</h5></label>
+                    </div>
+                    <div class="row justify-content-center p-2">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="img" id="img" onchange="MemberAadhar64(this)">
+                            <label class="custom-file-label" for="img">Choose file</label>
+                        </div>
+                        @*<input type="file" name="img" id="img" class="form-control form-control-sm form-control-file" onchange="encodeImgtoBase64(this)">*@
+                    </div>
+                    <div class="row justify-content-center">
+                        <img src="" class="img-fluid border" alt="" name="displayMemberAadhar" id="displayMemberAadhar" style="width:150px; height:180px">
+                        <input type="text" value="" id="member_aadhar_img" name="member_aadhar_img" hidden />
+                    </div>
+                </div>
+
+                <div class="col-md-3 justify-content-center p-3">
+                    <div class="row justify-content-center">
+                        <label for="member_image"><h5>Spouse PAN card No</h5></label>
+                    </div>
+                    <div class="row justify-content-center p-2">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="img" id="img" onchange="SpousePan64(this)">
+                            <label class="custom-file-label" for="img">Choose file</label>
+                        </div>
+                        @*<input type="file" name="img" id="img" class="form-control form-control-sm form-control-file" onchange="encoeImgtoBase64(this)">*@
+                    </div>
+                    <div class="row justify-content-center">
+                        <img src="" class="img-fluid border" alt="" name="displaySpousePan" id="displaySpousePan" style="width:150px; height:180px">
+                        <input type="text" value="" id="spouse_pan_img" name="spouse_pan_img" hidden />
+                    </div>
+                </div>
+
+                <div class="col-md-3 justify-content-center p-3">
+                    <div class="row justify-content-center">
+                        <label for="member_image"><h5>Spouse Aadhar No</h5></label>
+                    </div>
+                    <div class="row justify-content-center p-2">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="img" id="img" onchange="SpouseAadhar64(this)">
+                            <label class="custom-file-label" for="img">Choose file</label>
+                        </div>
+                        @*<input type="file" name="img" id="img" class="form-control form-control-sm form-control-file" onchange="encodeImgtoBase64(this)">*@
+                    </div>
+                    <div class="row justify-content-center">
+                        <img src="" class="img-fluid border" alt="" name="displaySpouseAadhar" id="displaySpouseAadhar" style="width:150px; height:180px">
+                        <input type="text" value="" id="spouse_aadhar_img" name="spouse_aadhar_img" hidden />
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-3 justify-content-center">
+                    <div class="row justify-content-center">
+                        <label for="member_image"><h5>Member Passport</h5></label>
+                    </div>
+                    <div class="row justify-content-center p-2">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="img" id="img" onchange="MemberPassportBase64(this)">
+                            <label class="custom-file-label" for="img">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <img src="" class="img-fluid border" alt="" name="displayMemberPassport" id="displayMemberPassport" style="width:150px; height:180px">
+                        <input type="text" value="" id="member_passport_img" name="member_passport_img" hidden />
+                    </div>
+                </div>
+
+                <div class="col-md-3 justify-content-center">
+                    <div class="row justify-content-center">
+                        <label for="member_image"><h5>Spouse Passport</h5></label>
+                    </div>
+                    <div class="row justify-content-center p-2">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="img" id="img" onchange="PassportImgtoBase64(this)">
+                            <label class="custom-file-label" for="img">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <img src="" class="img-fluid border" alt="" name="displaySpousePassport" id="displaySpousePassport" style="width:150px; height:180px">
+                        <input type="text" value="" id="spouse_passport_img" name="spouse_passport_img" hidden />
+                    </div>
+                </div>
+
+                <div class="col-md-3 justify-content-center">
+                    <div class="row justify-content-center">
+                        <label for="member_image"><h5>Marriage Certificate</h5></label>
+                    </div>
+                    <div class="row justify-content-center p-2">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="img" id="img" onchange="MarriageCertiBase64(this)">
+                            <label class="custom-file-label" for="img">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <img src="" class="img-fluid border" alt="" name="displayMarriageCerti" id="displayMarriageCerti" style="width:150px; height:180px">
+                        <input type="text" value="" id="marriage_certi_img" name="marriage_certi_img" hidden />
+                    </div>
+                </div>
+
+                <div class="col-md-3 justify-content-center">
+                    <div class="row justify-content-center">
+                        <label for="member_image"><h5>Divorce Certificate</h5></label>
+                    </div>
+                    <div class="row justify-content-center p-2">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="img" id="img" onchange="divorceCertiBase64(this)">
+                            <label class="custom-file-label" for="img">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <img src="" class="img-fluid border" alt="" name="divorceMarriageCerti" id="divorceMarriageCerti" style="width:150px; height:180px">
+                        <input type="text" value="" id="divorce_certi_img" name="divorce_certi_img" hidden />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <fieldset style="page-break-before: always">
+            <legend>Children Information</legend>
+            <div class="row border bg-light" id="newChild">
+                @{
+
+                    @Html.Partial("_AddChild", new RadioClub.radioclub.Entities.child_info());
+
+                }
+            </div>
+            <div>
+                @Html.ActionLink("Add Row", "childManager", null, new { id = "addItemchild", @class = "btn btn-sm btn-primary" })
+
+                <br />
+            </div>
+            <br />
+
+            @section Scripts
+                {
+                <script type="text/javascript">
+                            $(function () {
+                                var counter = 0;
+                             $('#addItemchild').on('click', function () {
+                                 $.ajax({
+
+                                url: '@Url.Action("Add")',
+                                cache: false,
+                                success: function (html) { $("#newChild").append(html); }
+                                    });
+                                 return false;
+                                 counter++;
+                                    });
+
+                            $('#newChild').on('click', '.deleteRow', function () {
+                                $(this).closest('.childRow').remove()
+                            });
+                            //$('#addchild').on('click', function () {
+                            //    event.preventDefault();
+                            //    $.ajax({
+                            //        async: false,
+                            //        url: '/Member/Create',
+                            //        cache: false,
+                            //        success: function (html) {
+                            //            $("#newChild").append("#new-child");
+                            //        }
+                            //    });
+                            //});
+
+                            $("#deleteRow").remove("click", function () {
+                                $(this).parents("#employeeRow:first").remove();
+                                return false;
+                            });
+                        });
+
+                            $("#first_name").keyup(function () {
+                                $("#em_name").val($(this).val());
+                            });
+
+                            //$("#membership_no").val(function () {
+                            //    $("#em_mem_no").val($(this).val());
+                            //});
+                </script>
+            }
+        </fieldset>
+
+
+        <div>
+            <div class="pb-1">Documents required of the Member's & all their Dependent Members (Spouse & Children)</div>
+
+            <div class="pb-3">Self Attested Xerox Copies of : Passport or Birth Certificate, Aadhar Card, PAN Card, Marriage Certificate</div>
+            <h5>PAN CARD IS MANDATORY</h5>
+            <div class="row">
+                <div class="col-md-2">
+                    Note :
+                </div>
+                <div class="col-md-10 pt-2">
+                    <div class="row">
+                        Members are requested to surrender the identity cards of their dependent daughters (if not 'Already' a Member) immediately after their Marriage & in case of their dependent
+
+                        sons, on reaching the age of 21 years, to the Office, as they are not eligible to use the club's facilities, as dependent
+                        members.
+                    </div>
+                    <div class="row pt-1">
+                        I confirm that I have read the 'Memorandum' and 'Articles of Association' & 'By-Laws' of the club and I confirm that I will abide by the same.
+                    </div>
+                    <div class="row pt-1">
+                        Any change in the members of the family has to be intimated within 90 days of such change with necessary proof.
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-md-7">
+                    <div>
+                        I hereby declare that to the best of my knowledge, the above information / particulars furnished by (Mr./Mrs. / Ms.)_____________________________   are correct & true.
+                    </div>
+                    <div class="pt-1">
+                        If any information given in this form is found to be incorrect, it will automatically render the application and / or membership invalid.
+                    </div>
+
+                </div>
+                <div class="col-md-5 align-text-bottom">
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="row pb-5">
+
+                            </div>
+                            <div class="row text-center">
+                                Date
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+                            <div class="row pb-5">
+
+                            </div>
+                            <div class="row border-top text-center">
+                                Signature of the Member
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-row form-group justify-content-end pt-3">
+            <div class="col-md-6">
+                @*<input type="text" value="Print" onclick="window.print();return false;" class="btn btn-sm btn-secondary" />*@
+            </div>
+            <div class="col-md-6 text-right">
+                <input type="submit" value="Submit" class="btn btn-sm btn-primary" />
+            </div>
+
+        </div>
+
+
+    </div>
+        }
+
+        <script type="text/javascript">
+            function divorceCertiBase64(element) {
+
+                var img = element.files[0];
+
+                var reader = new FileReader();
+
+                reader.onloadend = function () {
+                    $("#divorceMarriageCerti").attr("src", reader.result);
+                    var base64result = reader.result.split(',')[1];
+                    $("#divorce_certi_img").attr("value", base64result);
+                }
+                reader.readAsDataURL(img);
+            }
+
+            function MarriageCertiBase64(element) {
+
+                var img = element.files[0];
+
+                var reader = new FileReader();
+
+                reader.onloadend = function () {
+                    $("#displayMarriageCerti").attr("src", reader.result);
+                    var base64result = reader.result.split(',')[1];
+                    $("#marriage_certi_img").attr("value", base64result);
+                }
+                reader.readAsDataURL(img);
+            }
+
+            function SpouseAadhar64(element) {
+
+                var img = element.files[0];
+
+                var reader = new FileReader();
+
+                reader.onloadend = function () {
+                    $("#displaySpouseAadhar").attr("src", reader.result);
+                    var base64result = reader.result.split(',')[1];
+                    $("#spouse_aadhar_img").attr("value", base64result);
+                }
+                reader.readAsDataURL(img);
+            }
+
+            function SpousePan64(element) {
+
+                var img = element.files[0];
+
+                var reader = new FileReader();
+
+                reader.onloadend = function () {
+                    $("#displaySpousePan").attr("src", reader.result);
+                    var base64result = reader.result.split(',')[1];
+                    $("#spouse_pan_img").attr("value", base64result);
+                }
+                reader.readAsDataURL(img);
+            }
+
+            function MemberAadhar64(element) {
+
+                var img = element.files[0];
+
+                var reader = new FileReader();
+
+                reader.onloadend = function () {
+                    $("#displayMemberAadhar").attr("src", reader.result);
+                    var base64result = reader.result.split(',')[1];
+                    $("#member_aadhar_img").attr("value", base64result);
+                }
+                reader.readAsDataURL(img);
+            }
+
+            function MemberPan64(element) {
+
+                var img = element.files[0];
+
+                var reader = new FileReader();
+
+                reader.onloadend = function () {
+                    $("#displayMemberPan").attr("src", reader.result);
+                    var base64result = reader.result.split(',')[1];
+                    $("#member_pan_image").attr("value", base64result);
+                }
+                reader.readAsDataURL(img);
+            }
+
+            function MemberPassportBase64(element) {
+
+                var img = element.files[0];
+
+                var reader = new FileReader();
+
+                reader.onloadend = function () {
+                    $("#displayMemberPassport").attr("src", reader.result);
+                    var base64result = reader.result.split(',')[1];
+                    $("#member_passport_img").attr("value", base64result);
+                }
+                reader.readAsDataURL(img);
+            }
+
+            function PassportImgtoBase64(element) {
+                var img = element.files[0];
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    $("#displaySpousePassport").attr("src", reader.result);
+                    var base64result = reader.result.split(',')[1];
+                    $("#spouse_passport_img").attr("value", base64result);
+                }
+                reader.readAsDataURL(img);
+            }
+
+            function encodeImgtoBase64(element) {
+                var img = element.files[0];
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    $("#displayMemberImg").attr("src", reader.result);
+                    var base64result = reader.result.split(',')[1];
+                    $("#member_image").attr("value", base64result);
+                }
+                reader.readAsDataURL(img);
+            }
+
+            function spouseImgtoBase64(element) {
+                var img = element.files[0];
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    $("#displaySpouseImg").attr("src", reader.result);
+                    var base64result = reader.result.split(',')[1];
+                    $("#spouse_image").attr("value", base64result);
+                }
+                reader.readAsDataURL(img);
+            }
+
+            function spouseSignImgtoBase64(element) {
+                var img = element.files[0];
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    $("#displaySpouseSignImg").attr("src", reader.result);
+                    var base64result = reader.result.split(',')[1];
+                    $("#spouse_sign").attr("value", base64result);
+                }
+                reader.readAsDataURL(img);
+            }
+            //displaySpouseSignImg
+            function memberSignImgtoBase64(element) {
+                var img = element.files[0];
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    $("#displayMemberSignImg").attr("src", reader.result);
+                    var base64result = reader.result.split(',')[1];
+                    $("#spouse_sign").attr("value", base64result);
+                }
+                reader.readAsDataURL(img);
+            }
+
+            function childrenImgtoBase64(element) {
+                var img = element.files[0];
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    //$("#displayMemberSignImg").attr("src", reader.result);
+                    var base64result = reader.result.split(',')[1];
+                    $("#child_image").attr("value", base64result);
+                }
+                reader.readAsDataURL(img);
+            }
+
+
+            
+
+
+            //function SpouseImgtoBase64(element) {
+            //    var FileSize = element.files[0].size / 1024 / 1024;
+            //    var img = element.files[0];
+            //    var reader = new FileReader();
+            //    if (img.size <= 300000) {
+            //        reader.onloadend = function () {
+            //            $("#displaySpouseImg").attr("src", reader.result);
+            //            var base64result = reader.result.split(',')[1];
+            //            $("#spouse_image").attr("value", base64result);
+            //        }
+            //        reader.readAsDataURL(img);
+            //    } else {
+            //        alert("File size must be less that 300kb");
+            //    }
+            //}
+        </script>
+      
+    </div>

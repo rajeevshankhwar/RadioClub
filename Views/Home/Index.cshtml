@@ -1,0 +1,91 @@
+﻿@using RadioClub.radioclub.Entities;
+@model RadioClub.radioclub.Entities.member_info
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row pt-5 text-center">
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Members Data Update Form</h2>
+                <p>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#myModal">
+                        Update
+                    </button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="modal" id="myModal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Fill the below information.</h5>
+                    @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>*@
+                </div>
+                @*@using (Html.BeginForm("GetMemberInfo", "Member", FormMethod.Get))
+                    {*@
+                @using (Ajax.BeginForm("GetMemberInfo", "Home", null,
+                                 new AjaxOptions { HttpMethod = "Get"}))
+                {
+                    <div class="modal-body text-left">
+
+                        <div class="form-group row">
+                            <label for="membership_no" class="col-md-4 col-form-label">Membership No.</label>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(m => m.membership_no)
+                                @*<input type="text" class="form-control" id="membership_no" placeholder="Membership Id">*@
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="pan_card" class="col-md-4 col-form-label">PAN Card No.</label>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(m => m.pan_card)
+                                @*<input type="text" class="form-control" id="pan_card" placeholder="Pan Card Number">*@
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        @*<a class="btn btn-outline-primary btn-sm" href='@Url.Action("GetMemberInfo", "Member")'>Update</a>*@
+                        <button type="submit" class="btn btn-primary btn-sm">Click Here For Updation</button>
+                        @*<button type="reset" id="reset" class="btn btn-secondary btn-sm">Clear</button>*@
+                    </div>
+                    if (TempData["UserMessage"] != null)
+                    {
+                        <div class="alert @TempData["cssClass"]" role="alert">
+                            <strong>@TempData["UserMessage"]</strong>
+                        </div>
+                    }
+
+
+                }
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h4>Instructions:</h4>
+        <p>
+            <ul>
+                <li>Click on 'Update' button.</li>
+                <li>Fill the Membership No. & PAN Card No. in pop-up box. </li>
+                <li>Then click the 'Click Here For Updation' button</li>
+                <li>You will see your pervious updation request if you did earlier.</li>
+                <li>Click on the button 'Make new request for updation' appearing below on the screen.</li>
+                <li>Fill your data and click on 'Submit' button</li>
+            </ul>
+            </p>
+    </div>
+</div>

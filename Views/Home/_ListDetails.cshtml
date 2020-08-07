@@ -1,0 +1,139 @@
+﻿@model RadioClub.Models.MemberViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container pt-4">
+
+    <h3 class="text-center">Request for editing/updating personal information</h3>
+    @{
+        string pan = null;
+        string membershipno = null;
+
+        <div class="row justify-content-center pt-4">
+
+            <table class="table table-sm">
+                <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">
+                                Membership No
+                            </th>
+                            <th scope="col">
+                                PAN Card No
+                            </th>
+                            <th scope="col">
+                                Requested On
+                            </th>
+                            <th scope="col">
+                                Request Status
+                            </th>
+                            <th scope="col">
+                                Action Taken By
+                            </th>
+                            <th scope="col">
+                                Processed On
+                            </th>
+                            <th scope="col">
+                                Details
+                            </th>
+                        </tr>
+                </thead>
+                <tbody>
+
+
+                    @foreach (var item in Model.MemberViewModelList)
+                    {
+                        membershipno = @item.membership_no;
+                        pan = @item.pancard;
+                        <tr>
+                            <td>
+                                @item.membership_no
+
+                            </td>
+                            <td>
+                                @item.pancard
+
+                            </td>
+                            <td>
+                                @item.record_date
+                            </td>
+                            <td>
+                                @if (item.data_processed == 0)
+                                {
+                                    <p class="bg-light"> Data is in Processing</p>
+                                }
+                                else
+                                {
+                                    <strong> Data processed</strong>
+                                }
+
+
+                            </td>
+                            <td>
+                                @item.processed_by
+                            </td>
+                            <td>
+                                @item.processed_on
+                            </td>
+                            <td>
+                                @Html.ActionLink("Details", "_Details", new { id = item.member_id }, new { @class = "btn btn-outline-primary btn-sm" })
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    @Html.ActionLink("Make new request for updation", "_Create", new { membershipno = membershipno, pan = pan }, new { @class = "btn btn-primary btn-sm", @role = "button" })
+
+                </div>
+
+            </div>
+
+        </div>
+    }
+</div>
+
+@section Scripts
+                {
+
+    <script type="text/javascript">
+        $(window).on('load', function () {
+            $('#myModal').modal('show');
+        });
+    </script>
+}
+
+@if (TempData["ResponseMessage"] != null)
+{
+
+    <div class="modal" id="myModal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thank you for updation.</h5>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="col-md-12 alert @TempData["ResponseCssClass"]" role="alert">
+                        <strong>@TempData["ResponseMessage"]</strong>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+

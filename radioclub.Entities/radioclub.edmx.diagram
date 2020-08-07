@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b21fce18ed244978929e387b41538ab2" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="radioclubModel.child_info" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="radioclubModel.member_info" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="radioclubModel.member_update" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="radioclubModel.FK_MemberUpdate_ChildInfo" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="radioclubModel.C__MigrationHistory" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="radioclubModel.AspNetRole" Width="1.5" PointX="5.375" PointY="2.5" />
+        <EntityTypeShape EntityType="radioclubModel.AspNetUserClaim" Width="1.5" PointX="9.875" PointY="1" />
+        <EntityTypeShape EntityType="radioclubModel.AspNetUserLogin" Width="1.5" PointX="9.875" PointY="3.75" />
+        <EntityTypeShape EntityType="radioclubModel.AspNetUser" Width="1.5" PointX="7.625" PointY="1.375" />
+        <AssociationConnector Association="radioclubModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="radioclubModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="radioclubModel.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

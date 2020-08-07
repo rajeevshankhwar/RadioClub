@@ -1,0 +1,76 @@
+﻿@model RadioClub.Models.MemberViewModel
+@{
+    ViewBag.Title = "Processed Tokens";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container pt-4">
+
+        <h3 class="text-center">Member Updated Info</h3>
+        <div class="row justify-content-center pt-4">
+            <table class="table table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">
+                            Membership No
+                        </th>
+                        <th scope="col">
+                            PAN Card No
+                        </th>
+                        <th scope="col">
+                            Requested On
+                        </th>
+                        <th scope="col">
+                            Processed On
+                        </th>
+                        <th>
+                            Processed By
+                        </th>
+                        <th scope="col">
+                            Details
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model.MemberViewModelList)
+                    {
+                    <tr>
+                        <td>
+                            @item.membership_no
+                        </td>
+                        <td>
+                            @item.pancard
+                        </td>
+                        <td>
+                            @item.record_date
+                        </td>
+                        <td>
+                            @item.processed_on
+                        </td>
+                        <td>
+                            @item.processed_by
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { id = item.member_id }, new { @class = "btn btn-primary btn-sm", @role = "button" })
+                            @*<button class="btn btn-outline-primary" onclick="location.href='@Html.ActionLink("Details", "Details", new { id = item.member_id })'"></button>*@
+
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-md-6">
+                    @using (Html.BeginForm("Export", "Admin", FormMethod.Post))
+                    {
+                        <input type="submit" value="Export" class="btn btn-info btn-sm" />
+                    }
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+        </div>
+    </div>

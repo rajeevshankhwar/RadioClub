@@ -1,0 +1,661 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="radioclubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="child_info">
+          <Key>
+            <PropertyRef Name="children_id" />
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="children_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="member_id" Type="int" Nullable="false" />
+          <Property Name="child_name" Type="varchar" MaxLength="50" />
+          <Property Name="sex" Type="varchar" MaxLength="50" />
+          <Property Name="dob" Type="date" />
+          <Property Name="marital_status" Type="varchar" MaxLength="50" />
+          <Property Name="marriage_date" Type="date" />
+          <Property Name="independent_mem_no" Type="varchar" MaxLength="50" />
+          <Property Name="child_pancard" Type="varchar" MaxLength="50" />
+          <Property Name="child_aadharcard" Type="varchar" MaxLength="50" />
+          <Property Name="child_pan_image" Type="image" />
+          <Property Name="child_aadhar_image" Type="image" />
+          <Property Name="child_image" Type="image" />
+          <Property Name="dob_certi_img" Type="image" />
+          <Property Name="record_date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="child_sign" Type="image" />
+        </EntityType>
+        <EntityType Name="member_info">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="membership_no" Type="nvarchar(max)" />
+          <Property Name="full_name" Type="nvarchar(max)" />
+          <Property Name="pan_card" Type="nvarchar" MaxLength="100" />
+          <Property Name="aadhar" Type="nvarchar" MaxLength="100" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="member_update">
+          <Key>
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="member_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="membership_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" />
+          <Property Name="middle_name" Type="varchar" MaxLength="50" />
+          <Property Name="last_name" Type="varchar" MaxLength="50" />
+          <Property Name="dob" Type="date" />
+          <Property Name="persent_merital_status" Type="varchar" MaxLength="50" />
+          <Property Name="marriage_date" Type="varchar" MaxLength="50" />
+          <Property Name="nationality" Type="varchar" MaxLength="50" />
+          <Property Name="occupation" Type="varchar" MaxLength="100" />
+          <Property Name="divorce_date" Type="date" />
+          <Property Name="pancard" Type="varchar" MaxLength="50" />
+          <Property Name="aadharcard" Type="varchar" MaxLength="50" />
+          <Property Name="spouse_full_name" Type="varchar" MaxLength="100" />
+          <Property Name="spouse_dob" Type="date" />
+          <Property Name="spouse_nationality" Type="varchar" MaxLength="50" />
+          <Property Name="spouse_occupation" Type="varchar" MaxLength="100" />
+          <Property Name="spouse_pancard" Type="varchar" MaxLength="50" />
+          <Property Name="spouse_aadharcard" Type="varchar" MaxLength="50" />
+          <Property Name="residential_address" Type="varchar" MaxLength="100" />
+          <Property Name="residential_pincode" Type="varchar" MaxLength="50" />
+          <Property Name="company_name" Type="varchar" MaxLength="100" />
+          <Property Name="business_type" Type="varchar" MaxLength="50" />
+          <Property Name="position_held" Type="varchar" MaxLength="50" />
+          <Property Name="office_address" Type="varchar" MaxLength="150" />
+          <Property Name="office_pincode" Type="varchar" MaxLength="50" />
+          <Property Name="office_telep" Type="varchar" MaxLength="50" />
+          <Property Name="residential_tele" Type="varchar" MaxLength="50" />
+          <Property Name="mobile_no" Type="varchar" MaxLength="50" />
+          <Property Name="fax_no" Type="varchar" MaxLength="50" />
+          <Property Name="email_id" Type="varchar" MaxLength="50" />
+          <Property Name="communi_by_email" Type="bit" />
+          <Property Name="device_info" Type="varchar" MaxLength="50" />
+          <Property Name="ipaddress" Type="varchar" MaxLength="50" />
+          <Property Name="member_image" Type="image" />
+          <Property Name="spouse_image" Type="image" />
+          <Property Name="marriage_certi_img" Type="image" />
+          <Property Name="member_pan_image" Type="image" />
+          <Property Name="spouse_pan_img" Type="image" />
+          <Property Name="member_aadhar_img" Type="image" />
+          <Property Name="spouse_aadhar_img" Type="image" />
+          <Property Name="member_passport_img" Type="image" />
+          <Property Name="spouse_passport_img" Type="image" />
+          <Property Name="record_date" Type="datetime" Nullable="false" />
+          <Property Name="data_processed" Type="int" Nullable="false" />
+          <Property Name="processed_by" Type="varchar(max)" />
+          <Property Name="member_sign" Type="image" />
+          <Property Name="spouse_sign" Type="image" />
+          <Property Name="processed_on" Type="datetime" />
+          <Property Name="divorce_certi_image" Type="image" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberUpdate_ChildInfo">
+          <End Role="member_update" Type="Self.member_update" Multiplicity="1" />
+          <End Role="child_info" Type="Self.child_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member_update">
+              <PropertyRef Name="member_id" />
+            </Principal>
+            <Dependent Role="child_info">
+              <PropertyRef Name="member_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="radioclubModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="child_info" EntityType="Self.child_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="member_info" EntityType="Self.member_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="member_update" EntityType="Self.member_update" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberUpdate_ChildInfo" Association="Self.FK_MemberUpdate_ChildInfo">
+            <End Role="member_update" EntitySet="member_update" />
+            <End Role="child_info" EntitySet="child_info" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="radioclubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="child_info">
+          <Key>
+            <PropertyRef Name="children_id" />
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="children_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="member_id" Type="Int32" Nullable="false" />
+          <Property Name="child_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="DateTime" Precision="0" />
+          <Property Name="marital_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="marriage_date" Type="DateTime" Precision="0" />
+          <Property Name="independent_mem_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="child_pancard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="child_aadharcard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="child_pan_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="child_aadhar_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="child_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="dob_certi_img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="record_date" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="member_update" Relationship="Self.FK_MemberUpdate_ChildInfo" FromRole="child_info" ToRole="member_update" />
+          <Property Name="child_sign" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="member_info">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="membership_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="full_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pan_card" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="aadhar" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="member_update">
+          <Key>
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="member_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="membership_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="middle_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="DateTime" Precision="0" />
+          <Property Name="persent_merital_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="marriage_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="occupation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="divorce_date" Type="DateTime" Precision="0" />
+          <Property Name="pancard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="aadharcard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="spouse_full_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="spouse_dob" Type="DateTime" Precision="0" />
+          <Property Name="spouse_nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="spouse_occupation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="spouse_pancard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="spouse_aadharcard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="residential_address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="residential_pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="company_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="business_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="position_held" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="office_address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="office_pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="office_telep" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="residential_tele" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mobile_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fax_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="communi_by_email" Type="Boolean" />
+          <Property Name="device_info" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ipaddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="member_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="spouse_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="marriage_certi_img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="member_pan_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="spouse_pan_img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="member_aadhar_img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="spouse_aadhar_img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="member_passport_img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="spouse_passport_img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="record_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="data_processed" Type="Int32" Nullable="false" />
+          <Property Name="processed_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="child_info" Relationship="Self.FK_MemberUpdate_ChildInfo" FromRole="member_update" ToRole="child_info" />
+          <Property Name="member_sign" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="spouse_sign" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="processed_on" Type="DateTime" Precision="3" />
+          <Property Name="divorce_certi_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_MemberUpdate_ChildInfo">
+          <End Role="member_update" Type="Self.member_update" Multiplicity="1" />
+          <End Role="child_info" Type="Self.child_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member_update">
+              <PropertyRef Name="member_id" />
+            </Principal>
+            <Dependent Role="child_info">
+              <PropertyRef Name="member_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="radioclubEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="child_info" EntityType="Self.child_info" />
+          <EntitySet Name="member_info" EntityType="Self.member_info" />
+          <EntitySet Name="member_update" EntityType="Self.member_update" />
+          <AssociationSet Name="FK_MemberUpdate_ChildInfo" Association="Self.FK_MemberUpdate_ChildInfo">
+            <End Role="member_update" EntitySet="member_update" />
+            <End Role="child_info" EntitySet="child_info" />
+          </AssociationSet>
+          <EntitySet Name="C__MigrationHistory" EntityType="radioclubModel.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="radioclubModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="radioclubModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="radioclubModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="radioclubModel.AspNetUser" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="radioclubModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="radioclubModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="radioclubModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="radioclubModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="radioclubModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="radioclubModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="radioclubModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="radioclubModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="radioclubModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="radioclubModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="radioclubModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="radioclubModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="radioclubModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="radioclubModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="radioclubModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="radioclubModelStoreContainer" CdmEntityContainer="radioclubEntities">
+          <EntitySetMapping Name="child_info">
+            <EntityTypeMapping TypeName="radioclubModel.child_info">
+              <MappingFragment StoreEntitySet="child_info">
+                <ScalarProperty Name="child_sign" ColumnName="child_sign" />
+                <ScalarProperty Name="children_id" ColumnName="children_id" />
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="child_name" ColumnName="child_name" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="marital_status" ColumnName="marital_status" />
+                <ScalarProperty Name="marriage_date" ColumnName="marriage_date" />
+                <ScalarProperty Name="independent_mem_no" ColumnName="independent_mem_no" />
+                <ScalarProperty Name="child_pancard" ColumnName="child_pancard" />
+                <ScalarProperty Name="child_aadharcard" ColumnName="child_aadharcard" />
+                <ScalarProperty Name="child_pan_image" ColumnName="child_pan_image" />
+                <ScalarProperty Name="child_aadhar_image" ColumnName="child_aadhar_image" />
+                <ScalarProperty Name="child_image" ColumnName="child_image" />
+                <ScalarProperty Name="dob_certi_img" ColumnName="dob_certi_img" />
+                <ScalarProperty Name="record_date" ColumnName="record_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="member_info">
+            <EntityTypeMapping TypeName="radioclubModel.member_info">
+              <MappingFragment StoreEntitySet="member_info">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="membership_no" ColumnName="membership_no" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="pan_card" ColumnName="pan_card" />
+                <ScalarProperty Name="aadhar" ColumnName="aadhar" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="member_update">
+            <EntityTypeMapping TypeName="radioclubModel.member_update">
+              <MappingFragment StoreEntitySet="member_update">
+                <ScalarProperty Name="divorce_certi_image" ColumnName="divorce_certi_image" />
+                <ScalarProperty Name="processed_on" ColumnName="processed_on" />
+                <ScalarProperty Name="spouse_sign" ColumnName="spouse_sign" />
+                <ScalarProperty Name="member_sign" ColumnName="member_sign" />
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="membership_no" ColumnName="membership_no" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="middle_name" ColumnName="middle_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="persent_merital_status" ColumnName="persent_merital_status" />
+                <ScalarProperty Name="marriage_date" ColumnName="marriage_date" />
+                <ScalarProperty Name="nationality" ColumnName="nationality" />
+                <ScalarProperty Name="occupation" ColumnName="occupation" />
+                <ScalarProperty Name="divorce_date" ColumnName="divorce_date" />
+                <ScalarProperty Name="pancard" ColumnName="pancard" />
+                <ScalarProperty Name="aadharcard" ColumnName="aadharcard" />
+                <ScalarProperty Name="spouse_full_name" ColumnName="spouse_full_name" />
+                <ScalarProperty Name="spouse_dob" ColumnName="spouse_dob" />
+                <ScalarProperty Name="spouse_nationality" ColumnName="spouse_nationality" />
+                <ScalarProperty Name="spouse_occupation" ColumnName="spouse_occupation" />
+                <ScalarProperty Name="spouse_pancard" ColumnName="spouse_pancard" />
+                <ScalarProperty Name="spouse_aadharcard" ColumnName="spouse_aadharcard" />
+                <ScalarProperty Name="residential_address" ColumnName="residential_address" />
+                <ScalarProperty Name="residential_pincode" ColumnName="residential_pincode" />
+                <ScalarProperty Name="company_name" ColumnName="company_name" />
+                <ScalarProperty Name="business_type" ColumnName="business_type" />
+                <ScalarProperty Name="position_held" ColumnName="position_held" />
+                <ScalarProperty Name="office_address" ColumnName="office_address" />
+                <ScalarProperty Name="office_pincode" ColumnName="office_pincode" />
+                <ScalarProperty Name="office_telep" ColumnName="office_telep" />
+                <ScalarProperty Name="residential_tele" ColumnName="residential_tele" />
+                <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+                <ScalarProperty Name="fax_no" ColumnName="fax_no" />
+                <ScalarProperty Name="email_id" ColumnName="email_id" />
+                <ScalarProperty Name="communi_by_email" ColumnName="communi_by_email" />
+                <ScalarProperty Name="device_info" ColumnName="device_info" />
+                <ScalarProperty Name="ipaddress" ColumnName="ipaddress" />
+                <ScalarProperty Name="member_image" ColumnName="member_image" />
+                <ScalarProperty Name="spouse_image" ColumnName="spouse_image" />
+                <ScalarProperty Name="marriage_certi_img" ColumnName="marriage_certi_img" />
+                <ScalarProperty Name="member_pan_image" ColumnName="member_pan_image" />
+                <ScalarProperty Name="spouse_pan_img" ColumnName="spouse_pan_img" />
+                <ScalarProperty Name="member_aadhar_img" ColumnName="member_aadhar_img" />
+                <ScalarProperty Name="spouse_aadhar_img" ColumnName="spouse_aadhar_img" />
+                <ScalarProperty Name="member_passport_img" ColumnName="member_passport_img" />
+                <ScalarProperty Name="spouse_passport_img" ColumnName="spouse_passport_img" />
+                <ScalarProperty Name="record_date" ColumnName="record_date" />
+                <ScalarProperty Name="data_processed" ColumnName="data_processed" />
+                <ScalarProperty Name="processed_by" ColumnName="processed_by" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="radioclubModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="radioclubModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="radioclubModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="radioclubModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="radioclubModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="radioclubModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

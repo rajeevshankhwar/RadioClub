@@ -1,0 +1,107 @@
+﻿@model RadioClub.Models.MemberViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container pt-4">
+
+    <h3 class="text-center">Member Updated Info</h3>
+    <div class="row justify-content-center pt-4">
+        <table class="table table-sm">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">
+                        Membership No
+                    </th>
+                    <th scope="col">
+                        PAN Card No
+                    </th>
+                    <th scope="col">
+                        Requested On
+                    </th>
+                    <th scope="col">
+                        Details
+                    </th>
+                    <th scope="col">
+                        Data Processed
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.MemberViewModelList)
+                {
+                    <tr>
+                        <td>
+                            @item.membership_no
+                        </td>
+                        <td>
+                            @item.pancard
+                        </td>
+                        <td>
+                            @item.record_date
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { id = item.member_id }, new { @class = "btn btn-primary btn-sm", @role = "button" })
+                            @*<button class="btn btn-outline-primary" onclick="location.href='@Html.ActionLink("Details", "Details", new { id = item.member_id })'"></button>*@
+                    
+                        </td>
+                        <td>
+
+                            @Html.ActionLink("Processed", "Processed", new { id = item.member_id, processed_by = User.Identity.Name }, new { @class = "btn btn-danger btn-sm", @role = "button" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-6">
+                @using (Html.BeginForm("Export", "Admin", FormMethod.Post))
+                {
+                    <input type="submit" value="Export" class="btn btn-info btn-sm" />
+                }
+            </div>
+            <div class="col-md-6">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (TempData["ResDataProcessed"] != null)
+{
+
+    <div class="modal" id="myModal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thank you for updation.</h5>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="col-md-12 alert alert-danger" role="alert">
+                        <strong>Data Processed Successfully</strong>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts
+                {
+
+    <script type="text/javascript">
+        $(window).on('load', function () {
+            $('#myModal').modal('show');
+        });
+    </script>
+}

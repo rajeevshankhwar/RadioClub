@@ -1,0 +1,148 @@
+﻿@model RadioClub.Models.MemberViewModel
+
+@section Styles{
+    <style>
+        thead {
+            display: table-header-group;
+        }
+        table {
+            -fs-table-paginate: paginate;
+        }
+    </style>
+    }
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Full Name
+                </th>
+                <th>
+                    Sex
+                </th>
+                <th>
+                    Date of Birth
+                </th>
+                <th>
+                    Marital Status
+                </th>
+                <th>
+                    Marriage Date
+                </th>
+                <th>
+                    Independent Membership No.
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var childs in Model.child_info)
+                {
+                    <tr>
+                        <td>
+                            @childs.child_name
+                        </td>
+                        <td>
+                            @childs.sex
+                        </td>
+                        <td>
+                            @childs.dob
+                        </td>
+                        <td>
+                            @childs.marital_status
+                        </td>
+                        <td>
+                            @childs.marriage_date
+                        </td>
+                        <td>
+                            @childs.independent_mem_no
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+
+    </table>
+
+
+
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.marital_status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.marital_status, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.marital_status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.marriage_date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.marriage_date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.marriage_date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.independent_mem_no, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.independent_mem_no, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.independent_mem_no, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.child_pancard, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.child_pancard, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.child_pancard, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.child_aadharcard, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.child_aadharcard, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.child_aadharcard, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.child_pan_image, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.child_pan_image, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.child_pan_image, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.child_aadhar_image, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.child_aadhar_image, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.child_aadhar_image, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.child_image, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.child_image, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.child_image, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dob_certi_img, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.dob_certi_img, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.dob_certi_img, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+
+
+    @*@Html.ActionLink("Add", "TeacherManager", null, new { id = "addItemTeachers", @class = "button" });*@
+
+
+
+
+
